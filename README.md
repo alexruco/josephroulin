@@ -1,62 +1,112 @@
-# My Python Module 🚀
+# Lumpkin
 
-Welcome to **My Python Module**! This project is designed to [brief description of what your module does].
+Lumpkin is a simple Python package designed for handling emails via IMAP and SMTP. It allows users to receive and send emails programmatically, offering functionalities such as fetching emails from an inbox, generating hashes for email content, and sending emails with customized content.
 
-## Features ✨
+## Table of Contents
 
-- **Feature 1**: Explain the first feature. 🎉
-- **Feature 2**: Explain the second feature. 🔥
-- **Feature 3**: Explain the third feature. 🌟
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+  - [Receiving Emails](#receiving-emails)
+  - [Sending Emails](#sending-emails)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Installation 💻
+## Installation
 
-You can install the package via pip:
+To install Lumpkin, clone the repository and use `pip` to install the required dependencies.
 
 ```bash
-pip install my_python_module
-Usage 📚
-
-Here's a quick example to get you started:
-<!--
-```python
-from my_python_module import module
-
-# Example usage
-result = module.some_function(5, 10)
-print(result)
+git clone https://github.com/alexruco/lumpkin.git
+cd lumpkin
+pip install -r requirements.txt
 ```
--->
-Documentation 📖
 
-Documentation is available at [link to documentation].
-Running Tests 🧪
+## Configuration
 
-To run the tests, you can use the unittest module or pytest.
+Before using Lumpkin, you need to set up your email account details in the config.py file. Here's an example:
 
-bash
 
-python -m unittest discover tests
-# or
-pytest
+```python
+# config.py
 
-## Contributing 🤝
+USERNAME = "your_email@example.com"
+PASSWORD = "your_password"
+IMAP_SERVER = "imap.yourdomain.com"
+SMTP_SERVER = "smtp.yourdomain.com"
+```
+Replace the placeholders with your actual email credentials and server details.
 
-We welcome contributions from the community! Here’s how you can get involved:
+## Usage
+Receiving Emails
 
-1. **Report Bugs**: If you find a bug, please open an issue [here](https://github.com/yourusername/my_python_module/issues).
-2. **Suggest Features**: We’d love to hear your ideas! Suggest new features by opening an issue.
-3. **Submit Pull Requests**: Ready to contribute? Fork the repo, make your changes, and submit a pull request. Please ensure your code follows our coding standards and is well-documented.
-4. **Improve Documentation**: Help us improve our documentation. Feel free to make edits or add new content.
+To fetch and process emails from your inbox, use the lumpkin_receive function from the receive.py module:
 
-### How to Submit a Pull Request
+```python
+from lumpkin.receive import lumpkin_receive
 
-1. Fork the repository.
-2. Create a new branch: `git checkout -b my-feature-branch`.
-3. Make your changes and commit them: `git commit -m 'Add some feature'`.
-4. Push to the branch: `git push origin my-feature-branch`.
-5. Open a pull request on the original repository.
+emails_with_hashes = lumpkin_receive(USERNAME, PASSWORD, IMAP_SERVER)
+for email_data in emails_with_hashes:
+    print(f"Date: {email_data['email']['date']}")
+    print(f"From: {email_data['email']['from']}")
+    print(f"To: {email_data['email']['to']}")
+    print(f"Subject: {email_data['email']['subject']}")
+    print(f"Body: {email_data['email']['body']}")
+    print(f"Hash: {email_data['hash']}\n")
+```
 
-## License 📄
+This function connects to your email account, fetches all emails, and generates a hash for each email's content.
+Sending Emails
 
-This project is licensed under the MIT License. Feel free to use, modify, and distribute this software in accordance with the terms outlined in the [LICENSE](LICENSE) file.
+To send an email, use the lumpkin_send function from the send.py module:
 
+```python
+from lumpkin.send import lumpkin_send
+
+subject = 'Test Email'
+body = 'This is a test email sent from Lumpkin.'
+recipient = 'recipient@example.com'
+sender_email = 'your_email@example.com'
+
+lumpkin_send(SMTP_SERVER, 587, USERNAME, PASSWORD, subject, body, recipient, sender_email)
+
+```
+
+This function sends an email with the specified subject, body, and recipient details.
+
+```
+lumpkin/
+│
+├── lumpkin/
+│   ├── __init__.py
+│   ├── receive.py
+│   ├── send.py
+│
+├── test/
+│
+├── .gitignore
+├── config.py
+├── LICENSE
+├── README.md
+├── requirements.txt
+└── setup.py
+
+```
+lumpkin/: Contains the core modules for receiving and sending emails.
+test/: Directory for test scripts.
+.gitignore: Specifies files and directories to be ignored by Git.
+config.py: Configuration file for storing email credentials.
+LICENSE: The project's license.
+README.md: The file you're reading.
+requirements.txt: Lists the Python dependencies for the project.
+setup.py: Script for installing the package.
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute, please fork the repository, make your changes, and submit a pull request. Make sure to include tests for any new features or bug fixes.
+License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+The name of the project is a reference to William Lemuel "Willie" Lumpkin, a fictional supporting character appearing in American comic books published by Marvel Comics.

@@ -1,10 +1,12 @@
+#receive.py
+
 import imaplib
 import email
 from email.header import decode_header
 import hashlib
 from config import USERNAME, PASSWORD, IMAP_SERVER
 
-def fetch_all_emails(username, password, imap_server):
+def lumpkin_receive(username, password, imap_server):
     # Connect to the server
     mail = imaplib.IMAP4_SSL(imap_server)
 
@@ -90,7 +92,7 @@ def encryptor(emails):
     return email_hashes
 
 # Example usage
-emails_with_hashes = fetch_all_emails(USERNAME, PASSWORD, IMAP_SERVER)
+emails_with_hashes = lumpkin_receive(USERNAME, PASSWORD, IMAP_SERVER)
 for i, email_data in enumerate(emails_with_hashes, 1):
     print(f"Email {i}:")
     print(f"Date: {email_data['email']['date']}")

@@ -1,3 +1,5 @@
+#send.py
+
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -6,7 +8,7 @@ from email import encoders
 from config import USERNAME, PASSWORD, SMTP_SERVER
 
 
-def send_email(smtp_server, port, username, password, subject, body, recipient, sender_email):
+def lumpkin_send(smtp_server, port, username, password, subject, body, recipient, sender_email):
     try:
         # Create a multipart message and set headers
         msg = MIMEMultipart()
@@ -42,8 +44,8 @@ password = PASSWORD
 # Email details
 subject = 'Test Email'
 body = 'This is a test email sent from Python.'
-recipient = 'alex@ruco.pt'
-sender_email = 'maggie@seomaggie.com'
+recipient = 'recip@email.com'
+sender_email = 'send@email.com'
 
 # Send the email
-send_email(smtp_server, port, username, password, subject, body, recipient, sender_email)
+lumpkin_send(smtp_server, port, username, password, subject, body, recipient, sender_email)
