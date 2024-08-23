@@ -1,4 +1,4 @@
-# Lumpkin
+# josephroulin
 
 Lumpkin is a simple Python package designed for handling emails via IMAP and SMTP. It allows users to receive and send emails programmatically, offering functionalities such as fetching emails from an inbox, generating hashes for email content, and sending emails with customized content.
 

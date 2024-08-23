@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from lumpkin.send import send_email
+from josephroulin.send import send_email
 
 @patch('lumpkin.send.smtplib.SMTP')
 def test_send_email(mock_smtp):

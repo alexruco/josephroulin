@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from lumpkin.receive import receive_emails
+from josephroulin.receive import receive_emails
 
 @patch('lumpkin.receive.imaplib.IMAP4_SSL')
 def test_receive_emails(mock_imap):
