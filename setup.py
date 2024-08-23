@@ -6,15 +6,14 @@ setup(
     packages=find_packages(),
     install_requires=[
         "imaplib2",
-        # 'smtplib' and 'email' have been removed because they are part of the standard library
     ],
     entry_points={
         'console_scripts': [
-            'lumpkin=lumpkin:main',  # Adjust this according to your entry point
+            'lumpkin=lumpkin:main',  # This assumes 'main' is in __init__.py
         ],
     },
     author="Alex Ruco",
-    author_email="alexruco@example.com",
+    author_email="alex@ruco.pt",
     description="A package for handling emails with hashing functionality.",
     url="https://github.com/alexruco/lumpkin",
 )
