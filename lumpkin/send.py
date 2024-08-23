@@ -5,7 +5,6 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
-from config import USERNAME, PASSWORD, SMTP_SERVER
 
 def send_email(smtp_server, port, username, password, subject, body, recipient, sender_email):
     try:
