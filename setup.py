@@ -13,7 +13,6 @@ setup(
     install_requires=[
         # These should match your requirements.txt
         "imaplib2",
-        "smtplib",
         "email"
     ],
     classifiers=[
