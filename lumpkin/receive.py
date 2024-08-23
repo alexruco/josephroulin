@@ -6,7 +6,7 @@ from email.header import decode_header
 import hashlib
 from config import USERNAME, PASSWORD, IMAP_SERVER
 
-def lumpkin_receive(username, password, imap_server):
+def receive_emails(username, password, imap_server):
     # Connect to the server
     mail = imaplib.IMAP4_SSL(imap_server)
 

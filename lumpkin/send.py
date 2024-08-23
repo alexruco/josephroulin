@@ -8,7 +8,7 @@ from email import encoders
 from config import USERNAME, PASSWORD, SMTP_SERVER
 
 
-def lumpkin_send(smtp_server, port, username, password, subject, body, recipient, sender_email):
+def send_email(smtp_server, port, username, password, subject, body, recipient, sender_email):
     try:
         # Create a multipart message and set headers
         msg = MIMEMultipart()

@@ -46,7 +46,7 @@ To fetch and process emails from your inbox, use the lumpkin_receive function fr
 ```python
 from lumpkin.receive import lumpkin_receive
 
-emails_with_hashes = lumpkin_receive(USERNAME, PASSWORD, IMAP_SERVER)
+emails_with_hashes = receive_emails(USERNAME, PASSWORD, IMAP_SERVER)
 for email_data in emails_with_hashes:
     print(f"Date: {email_data['email']['date']}")
     print(f"From: {email_data['email']['from']}")
@@ -69,7 +69,7 @@ body = 'This is a test email sent from Lumpkin.'
 recipient = 'recipient@example.com'
 sender_email = 'your_email@example.com'
 
-lumpkin_send(SMTP_SERVER, 587, USERNAME, PASSWORD, subject, body, recipient, sender_email)
+send_email(SMTP_SERVER, 587, USERNAME, PASSWORD, subject, body, recipient, sender_email)
 
 ```
 
