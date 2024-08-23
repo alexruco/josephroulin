@@ -1,24 +1,20 @@
-#setup.py
-
 from setuptools import setup, find_packages
 
 setup(
     name="lumpkin",
     version="0.1",
-    description="A simple Python package for handling emails via IMAP and SMTP.",
-    author="Alex Ruco",
-    author_email="alex.ruco@mysitefaster.com",
-    url="https://github.com/alexruco/lumpkin",
     packages=find_packages(),
     install_requires=[
-        # These should match your requirements.txt
         "imaplib2",
-        "email"
+        # 'smtplib' and 'email' have been removed because they are part of the standard library
     ],
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-    ],
-    python_requires='>=3.6',
+    entry_points={
+        'console_scripts': [
+            'lumpkin=lumpkin:main',  # Adjust this according to your entry point
+        ],
+    },
+    author="Alex Ruco",
+    author_email="alexruco@example.com",
+    description="A package for handling emails with hashing functionality.",
+    url="https://github.com/alexruco/lumpkin",
 )
